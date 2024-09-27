@@ -36,7 +36,6 @@ def pil2tensor(img):
 
 def load_image(image_source):
     if image_source.startswith('http'):
-        print(image_source)
         response = requests.get(image_source)
         img = Image.open(BytesIO(response.content))
         file_name = image_source.split('/')[-1]
@@ -64,6 +63,7 @@ class LoadImageByUrlOrPath:
         print(url_or_path)
         img, name = load_image(url_or_path)
         img_out, mask_out = pil2tensor(img)
+        print('load finish')
         return (img_out, mask_out)
 
 
